@@ -30,7 +30,7 @@ object NameController {
         delete {
           entity(as[List[Name]]) { names =>
             onComplete(ReactiveStorage.remove(Source(names))) {
-              case util.Success(_) => complete("Deleted")
+              case util.Success(_) => complete("")
               case util.Failure(ex) => complete(StatusCodes.InternalServerError, s"An error occurred: ${ex.getMessage}")
             }
           }

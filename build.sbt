@@ -1,12 +1,16 @@
-ThisBuild / version := "0.1"
+version := "0.1"
 
-ThisBuild / scalaVersion := "3.3.3"
+scalaVersion := "3.3.3"
 
-lazy val root = (project in file("."))
-  .settings(
-    name := "dispatcher_scala",
-    idePackagePrefix := Some("ua.com.b.dispatcher_scala")
-  )
+name := "dispatcher_scala"
+
+dockerBaseImage := "eclipse-temurin:17"
+dockerExposedPorts += 8080
+
+enablePlugins(
+  JavaAppPackaging,
+  DockerPlugin
+)
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor-typed" % "2.8.5",
